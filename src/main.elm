@@ -1,8 +1,11 @@
 module Main exposing (..)
 
 import Html exposing (Html, input, text, button, div, ul, li)
-import Html.Attributes exposing (..)
+import Html.Attributes exposing (disabled, placeholder, value, style)
 import Html.Events exposing (onClick, onInput)
+import Events exposing (..)
+import Types exposing (Model, Content)
+import DomHelpers exposing (toDomList)
 
 
 main : Program Never Model Msg
@@ -10,29 +13,11 @@ main =
     Html.beginnerProgram { model = model, view = view, update = update }
 
 
-type alias Content =
-    { id : Int
-    , title : String
-    }
-
-
-type alias Model =
-    { content : List Content
-    , titleInput : String
-    }
-
-
 model : Model
 model =
     { content = []
     , titleInput = ""
     }
-
-
-type Msg
-    = AddTodo String
-    | ChangeInputText String
-    | RemoveTodo Int
 
 
 update : Msg -> Model -> Model
@@ -59,21 +44,6 @@ update msg model =
             }
 
 
-toUlList : List Content -> (Content -> String) -> Html Msg
-toUlList entry key =
-    ul []
-        (List.map
-            (\item ->
-                li
-                    [ onClick <| RemoveTodo item.id
-                    , style [ ( "cursor", "pointer" ), ( "padding", "3px" ) ]
-                    ]
-                    [ Html.text (key item) ]
-            )
-            entry
-        )
-
-
 view : Model -> Html Msg
 view model =
     div [ style [ ( "padding", "20px" ) ] ]
@@ -94,5 +64,5 @@ view model =
                 ]
             ]
             [ Html.text "Add Todo" ]
-        , div [] [ toUlList model.content .title ]
+        , div [] [ toDomList model.content .title ]
         ]
