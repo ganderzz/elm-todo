@@ -41,11 +41,10 @@ update msg model =
         AddTodo title ->
             { model
                 | content =
-                    [ { id = (List.length model.content)
-                      , title = title
-                      }
-                    ]
-                        ++ model.content
+                    { id = (List.length model.content)
+                    , title = title
+                    }
+                        :: model.content
                 , titleInput = ""
             }
 
