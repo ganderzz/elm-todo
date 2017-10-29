@@ -1,0 +1,18 @@
+var _user$project$Styles$Wrapper = {ctor: 'Wrapper'};
+var _user$project$Styles$css = function (_p0) {
+	return _rtfeldman$elm_css$Css$stylesheet(
+		A2(_rtfeldman$elm_css$Css_Namespace$namespace, 'todo', _p0));
+}(
+	{
+		ctor: '::',
+		_0: A2(
+			_rtfeldman$elm_css$Css$class,
+			_user$project$Styles$Wrapper,
+			{
+				ctor: '::',
+				_0: _rtfeldman$elm_css$Css$padding(
+					_rtfeldman$elm_css$Css$px(20)),
+				_1: {ctor: '[]'}
+			}),
+		_1: {ctor: '[]'}
+	});
