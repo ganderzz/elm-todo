@@ -1,2 +1,7 @@
 # elm-todo
-Todo app written in elm-lang
+Example todo app written in Elm.
+Used as a project to learn elm!
+
+## Run
+
+`elm reactor`
